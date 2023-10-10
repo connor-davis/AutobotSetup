@@ -16,12 +16,14 @@ namespace AutobotSetup;
 public partial class SetupWindow
 {
     private readonly string _appDataPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Autobot";
+    private string _installationPath;
     
     public SetupWindow()
     {
         InitializeComponent();
 
         InstallPathTxtBx.Text = _appDataPath;
+        _installationPath = _appDataPath;
     }
 
     private void BrowseBtn_OnClick(object sender, RoutedEventArgs e)
@@ -36,10 +38,10 @@ public partial class SetupWindow
             
         var selectedInstallPath = folderBrowserDialog.FileName;
 
-        if (selectedInstallPath != null)
-        {
-            InstallPathTxtBx.Text = selectedInstallPath;
-        }
+        if (selectedInstallPath == null) return;
+        
+        InstallPathTxtBx.Text = selectedInstallPath;
+        _installationPath = selectedInstallPath;
     }
 
     private void ContinueBtn_OnClick(object sender, RoutedEventArgs e)
@@ -121,9 +123,9 @@ public partial class SetupWindow
     {
         try
         {
-            if (!Directory.Exists(_appDataPath)) Directory.CreateDirectory(_appDataPath);
+            if (!Directory.Exists(_installationPath)) Directory.CreateDirectory(_installationPath);
             
-            ZipFile.ExtractToDirectory("Autobot.zip", _appDataPath, true);
+            ZipFile.ExtractToDirectory("Autobot.zip", _installationPath, true);
             
             Dispatcher.Invoke(() =>
             {
@@ -135,10 +137,10 @@ public partial class SetupWindow
                 InstallCompleteGrid.Visibility = Visibility.Visible;
 
                 // Create a desktop shortcut
-                CreateDesktopShortcut("Autobot", $"{_appDataPath}\\Autobot.exe");
+                CreateDesktopShortcut("Autobot", $"{_installationPath}\\Autobot.exe");
 
                 // Create a Start Menu shortcut
-                CreateStartMenuShortcut("Autobot", $"{_appDataPath}\\Autobot.exe");
+                CreateStartMenuShortcut("Autobot", $"{_installationPath}\\Autobot.exe");
             });
         }
         catch (Exception ex)
@@ -151,7 +153,7 @@ public partial class SetupWindow
     {
         var startInfo = new ProcessStartInfo
         {
-            FileName = $"{_appDataPath}\\Autobot.exe",
+            FileName = $"{_installationPath}\\Autobot.exe",
             UseShellExecute = false,
             CreateNoWindow = true
         };
