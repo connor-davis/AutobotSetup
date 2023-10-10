@@ -5,7 +5,6 @@ using System.IO.Compression;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 using IWshRuntimeLibrary;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Octokit;
@@ -55,7 +54,8 @@ public partial class SetupWindow
         var gitHubClient = new GitHubClient(new ProductHeaderValue("connor-davis"));
         var releases = await gitHubClient.Repository.Release.GetAll("connor-davis", "Autobotv4");
         var latestGithubVersion = new Version(releases[0].TagName.Replace("v", ""));
-        var downloadUrl = $"https://github.com/connor-davis/Autobotv4/releases/download/v1.0.0/Autobotv4.zip";
+        var downloadUrl = $"https://github.com/connor-davis/Autobotv4/releases/download/v{latestGithubVersion}/Autobotv4.zip";
+        
         using var httpClient = new HttpClient();
 
         try
@@ -112,7 +112,7 @@ public partial class SetupWindow
         }
     }
 
-    private async void Install()
+    private void Install()
     {
         try
         {
@@ -142,34 +142,36 @@ public partial class SetupWindow
 
     private void LaunchBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        ProcessStartInfo startInfo = new ProcessStartInfo($"{_appDataPath}\\Autobot.exe");
+        var startInfo = new ProcessStartInfo($"{_appDataPath}\\Autobot.exe");
 
         Process.Start(startInfo);
     }
-    
-    static void CreateDesktopShortcut(string shortcutName, string targetPath)
+
+    private static void CreateDesktopShortcut(string shortcutName, string targetPath)
     {
-        string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-        string shortcutFilePath = Path.Combine(desktopPath, $"{shortcutName}.lnk");
+        var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+        var shortcutFilePath = Path.Combine(desktopPath, $"{shortcutName}.lnk");
+        
         CreateShortcut(shortcutFilePath, targetPath);
     }
 
-    static void CreateStartMenuShortcut(string shortcutName, string targetPath)
+    private static void CreateStartMenuShortcut(string shortcutName, string targetPath)
     {
-        string startMenuPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs");
-        string shortcutFilePath = Path.Combine(startMenuPath, $"{shortcutName}.lnk");
+        var startMenuPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs");
+        var shortcutFilePath = Path.Combine(startMenuPath, $"{shortcutName}.lnk");
+        
         CreateShortcut(shortcutFilePath, targetPath);
     }
 
-    static void CreateShortcut(string shortcutFilePath, string targetPath)
+    private static void CreateShortcut(string shortcutFilePath, string targetPath)
     {
         // Create a shortcut object
-        WshShell shell = new WshShell();
-        IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutFilePath);
+        var shell = new WshShell();
+        var shortcut = (IWshShortcut)shell.CreateShortcut(shortcutFilePath);
         
         // Set the target application path
         shortcut.TargetPath = targetPath;
-        //
+        
         // Save the shortcut
         shortcut.Save();
     }
