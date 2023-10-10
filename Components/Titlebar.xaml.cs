@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace AutobotSetup.Components;
 
-public partial class Titlebar : UserControl
+public partial class Titlebar
 {
     public Titlebar()
     {
