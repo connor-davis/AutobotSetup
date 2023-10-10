@@ -10,8 +10,8 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Title="AutobotSetup"
-        Width="700"
-        Height="500"
+        Width="400"
+        SizeToContent="Height"
         Background="Transparent"
         BorderThickness="0">
     <Border Padding="10">
@@ -21,18 +21,99 @@
         
         <Border CornerRadius="10" BorderBrush="#404040" BorderThickness="1" Background="#171717">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="80"/>
-                </Grid.ColumnDefinitions>
+                <Grid x:Name="InstallPathGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
                 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
                 
-                <components:Titlebar Grid.Row="0" Grid.ColumnSpan="2" />
+                    <components:Titlebar Grid.Row="0" Grid.ColumnSpan="5" />
+                
+                    <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Padding="10 10 10 0">
+                        <Label Content="Install Path" Foreground="#FFFFFFFF" />
+                    </Border>
+                
+                    <TextBox x:Name="InstallPathTxtBx" Grid.Row="2" Grid.Column="1" />
+                    <Button x:Name="BrowseBtn" Click="BrowseBtn_OnClick" Grid.Row="2" Grid.Column="3" Content="Browse" />
+                    <Button x:Name="ContinueBtn" Click="ContinueBtn_OnClick" Grid.Row="4" Grid.Column="3" Content="Continue" />
+                </Grid>
+            
+                <Grid x:Name="DownloadGrid" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+                    
+                    <components:Titlebar Grid.Row="0" />
+                    
+                    <Border Grid.Row="1" Padding="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                        
+                            <Label x:Name="DownloadStatus" Grid.Row="0" HorizontalAlignment="Center" Content="Downloading Autobot" VerticalAlignment="Center" Foreground="#FFFFFFFF"/>
+                        
+                            <ProgressBar x:Name="DownloadProgressBar" Grid.Row="1" Style="{StaticResource AutobotProgressbar}" Background="#FF262626" Foreground="#FF4f46e5" BorderThickness="0" />
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <Grid x:Name="InstallGrid" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+                    
+                    <components:Titlebar Grid.Row="0" />
+                    
+                    <Border Grid.Row="1" Padding="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                        
+                            <Label x:Name="InstallStatus" Grid.Row="0" HorizontalAlignment="Center" Content="Installing Autobot" VerticalAlignment="Center" Foreground="#FFFFFFFF"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+                
+                <Grid x:Name="InstallCompleteGrid" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <components:Titlebar Grid.Row="0" />
+                    
+                    <Border Grid.Row="1" Padding="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                        
+                            <Label Grid.Row="0" HorizontalAlignment="Center" Content="Installation Complete" VerticalAlignment="Center" Foreground="#FFFFFFFF"/>
+                        
+                            <Button x:Name="LaunchBtn" Click="LaunchBtn_OnClick" Grid.Row="1" HorizontalAlignment="Center">
+                                <Label Content="Launch Autobot" Foreground="White" Padding="10 0"></Label>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
         </Border>
     </Border>

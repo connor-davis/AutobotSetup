@@ -14,6 +14,15 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
       <None Remove="Assets\LoneWolfTransparent.png" />
+      <COMReference Include="IWshRuntimeLibrary">
+        <WrapperTool>tlbimp</WrapperTool>
+        <VersionMinor>0</VersionMinor>
+        <VersionMajor>1</VersionMajor>
+        <Guid>f935dc20-1cf0-11d0-adb9-00c04fd58a0b</Guid>
+        <Lcid>0</Lcid>
+        <Isolated>false</Isolated>
+        <EmbedInteropTypes>true</EmbedInteropTypes>
+      </COMReference>
       <Resource Include="Assets\LoneWolfTransparent.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
@@ -21,6 +30,8 @@
 
     <ItemGroup>
       <PackageReference Include="Octokit" Version="8.0.1" />
+      <PackageReference Include="SharpCompress" Version="0.34.1" />
+      <PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
     </ItemGroup>
 
 </Project>

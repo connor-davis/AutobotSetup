@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <Style TargetType="{x:Type TextBox}">
-        <Setter Property="Background" Value="#FFFFFFFF"/>
-        <Setter Property="BorderBrush" Value="#FFd4d4d4"/>
-        <Setter Property="Foreground" Value="#FF0a0a0a"/>
+        <Setter Property="Background" Value="#FF262626"/>
+        <Setter Property="BorderBrush" Value="#FF404040"/>
+        <Setter Property="Foreground" Value="#FFFFFFFF"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -24,10 +24,10 @@
                             <Setter Property="Opacity" TargetName="border" Value="0.56"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FFd4d4d4"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF404040"/>
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FFd4d4d4"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF404040"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

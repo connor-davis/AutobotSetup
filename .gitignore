@@ -4,3 +4,9 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 .idea
+/.vs/AutobotSetup/DesignTimeBuild/.dtbcache.v2
+/.vs/AutobotSetup/v17/.futdcache.v2
+/.vs/AutobotSetup/v17/.suo
+/.vs/AutobotSetup/FileContentIndex/23536534-d607-4cd4-902c-88cac87982b7.vsidx
+/.vs/ProjectEvaluation/autobotsetup.metadata.v7.bin
+/.vs/ProjectEvaluation/autobotsetup.projects.v7.bin

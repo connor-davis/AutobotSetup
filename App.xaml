@@ -8,6 +8,7 @@
                 <ResourceDictionary Source="/Styles/Buttons.xaml" />
                 <ResourceDictionary Source="/Styles/Checkboxes.xaml" />
                 <ResourceDictionary Source="/Styles/TextBoxes.xaml" />
+                <ResourceDictionary Source="/Styles/ProgressBars.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

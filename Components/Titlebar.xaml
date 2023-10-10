@@ -11,7 +11,7 @@
             <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
         
-        <Label x:Name="DragArea" MouseDown="DragArea_OnMouseDown" Grid.Column="0" VerticalAlignment="Center" Content="Autobot Setup" Foreground="#FFFFFFFF" />
+        <Label x:Name="DragArea" Padding="10 0 0 0" MouseDown="DragArea_OnMouseDown" Grid.Column="0" VerticalAlignment="Center" Content="Autobot Setup" Foreground="#FFFFFFFF" />
         
         <Button x:Name="CloseBtn" Click="CloseBtn_OnClick" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource CloseButton}" Foreground="#FFFFFFFF" Content="✕"></Button>
     </Grid>
