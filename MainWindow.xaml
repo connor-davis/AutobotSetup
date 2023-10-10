@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutobotSetup"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Title="AutobotSetup"
+        Width="400"
+        Height="500"
+        Background="Transparent"
+        BorderThickness="0">
+    <Border Padding="10">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" Opacity="0.1" BlurRadius="10" ShadowDepth="5" />
+        </Border.Effect>
+        
+        <Border CornerRadius="10" BorderBrush="DimGray" BorderThickness="1" Background="#1C1C1C">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                
+                <Image Grid.Row="0" Source="Assets/LoneWolfTransparent.png">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
+                        </Style>
+                    </Image.Resources>
+                </Image>
+            </Grid>
+        </Border>
+    </Border>
 </Window>
