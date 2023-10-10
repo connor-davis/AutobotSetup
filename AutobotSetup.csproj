@@ -5,17 +5,10 @@
         <TargetFramework>net6.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
+        <ApplicationIcon>Assets\LoneWolf.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Assets\LoneWolf.ico" />
-      <Resource Include="Assets\LoneWolf.ico">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Resource>
       <None Remove="Assets\LoneWolf.png" />
       <Resource Include="Assets\LoneWolf.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>

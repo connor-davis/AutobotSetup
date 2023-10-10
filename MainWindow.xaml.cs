@@ -1,4 +1,6 @@
-﻿namespace AutobotSetup
+﻿using System.Windows;
+
+namespace AutobotSetup
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -17,6 +19,14 @@
         public static MainWindow? GetInstance()
         {
             return _instance;
+        }
+
+        private void ContinueBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var setupWindow = new SetupWindow();
+            
+            setupWindow.Show();
+            Close();
         }
     }
 }

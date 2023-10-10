@@ -43,7 +43,7 @@
             
                 <Label Grid.Row="2" Content="Welcome, to get started, click Continue below." Foreground="#a3a3a3" HorizontalAlignment="Center" />
             
-                <Button Grid.Row="3" Content="Continue" Width="80"/>
+                <Button x:Name="ContinueBtn" Click="ContinueBtn_OnClick" Grid.Row="3" Content="Continue" Width="80"/>
             </Grid>
         </Border>
     </Border>
