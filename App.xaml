@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:AutobotSetup"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Buttons.xaml" />
+                <ResourceDictionary Source="/Styles/Checkboxes.xaml" />
+                <ResourceDictionary Source="/Styles/TextBoxes.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

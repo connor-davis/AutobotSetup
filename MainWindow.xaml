@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutobotSetup"
+        xmlns:components="clr-namespace:AutobotSetup.Components"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -18,25 +19,32 @@
             <DropShadowEffect Color="Black" Opacity="0.1" BlurRadius="10" ShadowDepth="5" />
         </Border.Effect>
         
-        <Border CornerRadius="10" BorderBrush="DimGray" BorderThickness="1" Background="#1C1C1C">
+        <Border CornerRadius="10" BorderBrush="#404040" BorderThickness="1" Background="#171717">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
+            
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
                 
-                <Image Grid.Row="0" Source="Assets/LoneWolfTransparent.png">
+                <components:Titlebar Grid.Row="0" />
+            
+                <Image Grid.Row="1" Source="Assets/LoneWolfTransparent.png">
                     <Image.Resources>
                         <Style TargetType="Image">
                             <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
                         </Style>
                     </Image.Resources>
                 </Image>
+            
+                <Label Grid.Row="2" Content="Welcome, to get started, click Continue below." Foreground="#a3a3a3" HorizontalAlignment="Center" />
+            
+                <Button Grid.Row="3" Content="Continue" Width="80"/>
             </Grid>
         </Border>
     </Border>
