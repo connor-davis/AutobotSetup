@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using IWshRuntimeLibrary;
@@ -95,11 +96,15 @@ public partial class SetupWindow
                     DownloadStatus.Content = $"Downloading... {progress:F2}%";
                 });
             }
+            
+            fileStream.Close();
 
             Dispatcher.Invoke(() =>
             {
                 DownloadStatus.Content = "Download Finished.";
 
+                Thread.Sleep(1000);
+                
                 DownloadGrid.Visibility = Visibility.Collapsed;
                 InstallGrid.Visibility = Visibility.Visible;
                 
@@ -123,6 +128,8 @@ public partial class SetupWindow
             Dispatcher.Invoke(() =>
             {
                 InstallStatus.Content = "Installation Complete.";
+                
+                Thread.Sleep(1000);
 
                 InstallGrid.Visibility = Visibility.Collapsed;
                 InstallCompleteGrid.Visibility = Visibility.Visible;
@@ -142,9 +149,16 @@ public partial class SetupWindow
 
     private void LaunchBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        var startInfo = new ProcessStartInfo($"{_appDataPath}\\Autobot.exe");
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = $"{_appDataPath}\\Autobot.exe",
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
 
         Process.Start(startInfo);
+        
+        Environment.Exit(0);
     }
 
     private static void CreateDesktopShortcut(string shortcutName, string targetPath)
